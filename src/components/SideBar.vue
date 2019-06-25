@@ -1,7 +1,7 @@
 <template>
 
   <div class="sidenav">
-    <h3 class="title">{{ this.pageName }}</h3>
+    <h3 class="title">{{ this.productName }}</h3>
     <div class="title separator"></div>
 
     <div v-for="allProject in allProjects">
@@ -17,8 +17,8 @@ export default {
   mixins: [helpers],
   name: 'HelloWorld',
   props: {
-    pageName: String,
-    allProjects: Array
+    allProjects: [Promise, Array],
+    productName : String
   },
   data: function () {
     return {

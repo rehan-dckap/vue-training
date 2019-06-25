@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <SideBar/>
+    <SideBar :all-projects="allProjects" :product-name="productName"/>
   </div>
 </template>
 
@@ -16,11 +16,27 @@ export default {
   },
   data() {
     return {
-      allProjects: null
+      allProjects: null,
+      productName: 'QA touch'
     }
   },
   created() {
-    this.allProjects = this.fetchData('https://api.qatouch.com/api/v1/getAllProjects', this.config);
+    // arrow function
+    this.allProjects = this.fetchData('https://api.qatouch.com/api/v1/getAllProjects', this.config).then(response => {
+                            this.allProjects = response['data']['data'];
+                      })
+                      .catch(function (error) {
+                        // handle error
+                        console.log(error);
+                      })
+                      .finally(function () {
+                        // always executed
+                      });
+
+    // without arrow function
+    // this.allProjects = this.fetchData('https://api.qatouch.com/api/v1/getAllProjects', this.config).then(function(data){
+    //   this.allProjects = data;
+    // })
   },
   methods: {
 

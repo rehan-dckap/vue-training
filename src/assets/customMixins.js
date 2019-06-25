@@ -16,22 +16,9 @@ export const helpers = {
     },
     methods : {
         fetchData(_url, _config) {
-            let data = null;
             // Make a request for a user with a given ID
-            let x = axios.get('https://api.qatouch.com/api/v1/getAllProjects/',_config)
-                .then(function (response) {
-                    // handle success
-                    console.log('asdf');
-                    return response['data']['data'];
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-                .finally(function () {
-                    // always executed
-                });
-            console.log(x);
+            return axios.get('https://api.qatouch.com/api/v1/getAllProjects/',_config);
+
         }
     }
 
