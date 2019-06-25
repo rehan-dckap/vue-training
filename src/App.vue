@@ -1,28 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <SideBar/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import { helpers } from './assets/customMixins.js';
+import SideBar from './components/SideBar.vue'
 
 export default {
+  mixins: [helpers],
   name: 'app',
   components: {
-    HelloWorld
+    SideBar
+  },
+  data() {
+    return {
+      allProjects: null
+    }
+  },
+  created() {
+    this.allProjects = this.fetchData('https://api.qatouch.com/api/v1/getAllProjects', this.config);
+  },
+  methods: {
+
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
