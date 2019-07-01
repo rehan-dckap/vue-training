@@ -17,7 +17,7 @@ export const helpers = {
     methods : {
         fetchData(_url, _config) {
             // Make a request for a user with a given ID
-            return axios.get('https://api.qatouch.com/api/v1/getAllProjects/',_config);
+            return axios.get(_url,_config);
 
         }
     }

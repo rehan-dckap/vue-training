@@ -5,7 +5,7 @@
     <div class="title separator"></div>
 
     <div v-for="allProject in allProjects">
-      <div class="project-name">{{ allProject.project_name}}</div>
+      <div class="project-name" v-on:click="getProjectID(allProject.project_key)">{{ allProject.project_name}}</div>
     </div>
   </div>
 
@@ -18,11 +18,17 @@ export default {
   name: 'HelloWorld',
   props: {
     allProjects: [Promise, Array],
-    productName : String
+    productName : String,
+    projectId : [String, Number]
   },
   data: function () {
     return {
 
+    }
+  },
+  methods: {
+    getProjectID(id) {
+      this.$emit("update-project-id", id) ;
     }
   }
 }
